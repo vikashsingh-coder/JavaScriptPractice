@@ -64,6 +64,60 @@ class Dog extends Animal {
 const dog1 = new Dog("tommy")
 
 
+// JavaScript does not have true classical inheritance.
+// It uses prototype-based inheritance, and ES6 classes are just syntactic sugar over prototypes.
+
+// __proto__ vs prototype
+
+const arr = []
+console.log(arr.__proto__ === Array.prototype) // true | array inharit form Array fucnction
+
+
+function User() { }
+
+User.prototype.login = function () {
+    console.log("user logged in")
+}
+
+const u1 = new User();
+console.log(u1.__proto__ === User.prototype) // true | u1 inharit from User function
+
+// prototype used for function property
+// __proto__ shows object inharitance point
+
+// proto type chaning A => B => C => D
+
+function A() { }
+A.prototype.a = function () {
+    console.log("a is getting called")
+}
+
+
+function B() { }
+B.prototype = Object.create(A.prototype) // inharit all prototype of A
+
+const b = new B()
+
+// first look for a method in b object, then in B prototype, then in A prototype
+b.a();   // found in A.prototype  // a is getting called
+
+
+// Another example
+
+const obj = { name: "vikash" };
+
+obj.toString(); // first look in obj, if not found go to object prototype
+
+
+
+
+
+
+
+
+
+
+
 
 
 
