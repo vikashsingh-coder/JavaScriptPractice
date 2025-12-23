@@ -163,10 +163,44 @@ class NewB extends NewA {
     }
 }
 
-console.log("NewB.prototype.__proto__ ", NewB.prototype.__proto__)
-console.log("NewA.prototype ", NewA.prototype)
+console.log("NewB.prototype.__proto__ ", NewB.prototype.__proto__) // {}
+console.log("NewA.prototype ", NewA.prototype) // {}
 
-console.log(NewB.prototype.__proto__ === NewA.prototype) // p
+console.log(NewB.prototype.__proto__ === NewA.prototype)
+
+
+
+// this + prototype (most important)
+// this can only be defined in parenet.
+
+function User(name) {
+    this.name
+}
+
+User.prototype.sayHi = function () {
+    console.log("Hi, nice to meet you " + this.name)
+}
+
+const user1 = new User("vikash")
+const user2 = new User("rajat")
+
+// same function different this.
+user1.sayHi()
+user2.sayHi()
+
+
+// 5. __proto__ vs Object.setPrototypeOf
+
+// Avoid
+// obj.__proto__ = parent
+
+// use
+// Object.setPrototypeOf(obj, parent)
+
+
+
+
+
 
 
 
