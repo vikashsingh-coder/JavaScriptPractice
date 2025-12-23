@@ -143,12 +143,31 @@ function Child(name, age) {
 }
 
 // inherit methods
-Child.prototype = Object.create(Parent)
+Child.prototype = Object.create(Parent.prototype) // should inherit from Parent.prototype, not Parent
 Child.prototype.constructor = Child
 
 const c = new Child('Vikash', 28)
 
 c.sayHi()
+
+
+// 5. ES6 class prototype inheritance
+class NewA {
+    bar() {
+        console.log("this is bar method")
+    }
+}
+class NewB extends NewA {
+    foo() {
+        console.log("this is a foo method")
+    }
+}
+
+console.log("NewB.prototype.__proto__ ", NewB.prototype.__proto__)
+console.log("NewA.prototype ", NewA.prototype)
+
+console.log(NewB.prototype.__proto__ === NewA.prototype) // p
+
 
 
 
