@@ -109,6 +109,23 @@ const obj = { name: "vikash" };
 obj.toString(); // first look in obj, if not found go to object prototype
 
 
+const animal = {
+    eat() {
+        console.log("Eating")
+    }
+}
+
+const dog = Object.create(animal)
+
+dog.bark = function () {
+    console.log("bow bow bow")
+}
+
+dog
+
+
+
+
 
 
 
