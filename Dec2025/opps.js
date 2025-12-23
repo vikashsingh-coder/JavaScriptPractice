@@ -121,7 +121,13 @@ dog.bark = function () {
     console.log("bow bow bow")
 }
 
-dog
+// eating come from animal and bark comr form dog
+dog.eat()
+dog.bark()
+
+//  behind the scean  dog.__proto__ === animal
+
+
 
 
 
