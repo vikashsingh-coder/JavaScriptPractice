@@ -127,6 +127,30 @@ dog.bark()
 
 //  behind the scean  dog.__proto__ === animal
 
+// 4. function constructor inheritance (old school)
+
+function Parent(name) {
+    this.name = name;
+}
+
+Parent.prototype.sayHi = function () {
+    console.log("Hi " + this.name)
+}
+
+function Child(name, age) {
+    Parent.call(this, name) // copy properties
+    this.age = age
+}
+
+// inherit methods
+Child.prototype = Object.create(Parent)
+Child.prototype.constructor = Child
+
+const c = new Child('Vikash', 28)
+
+c.sayHi()
+
+
 
 
 
