@@ -246,7 +246,7 @@ p1.sayBye()
 // const b = {}
 // Object.setPrototypeOf(b, parent)
 
-// =========== Real world payment system example
+// =========== Real world payment system example (Polymorphism)
 
 class Payment {
     pay(amount) {
