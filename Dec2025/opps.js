@@ -84,11 +84,12 @@ p1.sayBye()
 
 //  __proto__ vs prototype
 // __proto__ is hte the referecne to its inheritance Object
-// prototype is the property of fucnction, which allow to add prototype to a contructure function
+// prototype is the property of function, which allow to add prototype to a contructure function
 
 // const arr = []
-// console.log(arr.__proto__ === Array.prototype) // true | array inharit form Array fucnction
+// console.log(arr.__proto__ === Array.prototype) // true | array inharit from Array function
 
+// User is a constructor function
 // function User() { }
 
 // User.prototype.login = function () {
@@ -154,7 +155,7 @@ p1.sayBye()
 // }
 
 // function Child(name, age) {
-//     Parent.call(this, name) // copy properties
+//     Parent.call(this, name) // copy properties equivalent of super in class
 //     this.age = age
 // }
 
@@ -186,8 +187,7 @@ p1.sayBye()
 
 
 
-// // this + prototype (most important)
-// // this can only be defined in parenet.
+//  this + prototype (most important), "this" can only be defined in parenet.
 
 // function User(name) {
 //     this.name
@@ -200,18 +200,52 @@ p1.sayBye()
 // const user1 = new User("vikash")
 // const user2 = new User("rajat")
 
-// // same function different this.
+// same function different this, since each time we create different object
 // user1.sayHi()
 // user2.sayHi()
 
 
-// // 5. __proto__ vs Object.setPrototypeOf
+// 5. __proto__ vs Object.setPrototypeOf
 
 // // Avoid
-// // obj.__proto__ = parent
+// obj.__proto__ = parent
 
-// // use
-// // Object.setPrototypeOf(obj, parent)
+// // Use this  
+// Object.setPrototypeOf(obj, parent)
+// UserFunction.prototype.login = function () { }
+
+// Virtual model: obj => constructor.prototype => Object.prototype => null
+// Example 1 
+
+const parent = {
+    greet() {
+        console.log("Gretting coming fom Parents")
+    }
+};
+
+const obj = {}
+Object.setPrototypeOf(obj, parent)  // set prototype of obj as parent
+obj.greet()
+
+// in classes
+
+class Parent {
+    gretting() {
+        console.log("Gretting from Parent")
+    }
+}
+
+class Child extends Parent { }
+
+// Internally  Object.setPrototypeOf(Child.prototype, Parent.prototype)
+
+
+
+
+
+
+
+
 
 
 
