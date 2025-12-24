@@ -250,19 +250,19 @@ p1.sayBye()
 
 class Payment {
     pay(amount) {
-        console.log(`payment of ${amount} done by cash`)
-    }
-}
-
-class UPIPayment extends Payment {
-    pay(amount) {
-        console.log(`payment of ${amount} done by UPI `)
+        console.log(` amount ${amount} paid by cash`)
     }
 }
 
 class CreditCardPayment extends Payment {
     pay(amount) {
-        console.log(`payment of ${amount} done by Credit Card `)
+        console.log(` amount ${amount} paid by credit card`)
+    }
+}
+
+class UPIPayment extends Payment {
+    pay(amount) {
+        console.log(` amount ${amount} paid by UPI`)
     }
 }
 
@@ -270,14 +270,9 @@ function processPayment(paymentMethod, amount) {
     return paymentMethod.pay(amount)
 }
 
-processPayment(new CreditCardPayment(), 400)
+processPayment(new CreditCardPayment(), 500)
 processPayment(new UPIPayment(), 600)
-
-
-
-
-
-
+processPayment(new Payment(), 700)
 
 
 
