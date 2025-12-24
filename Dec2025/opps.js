@@ -205,47 +205,73 @@ p1.sayBye()
 // user2.sayHi()
 
 
-// 5. __proto__ vs Object.setPrototypeOf
+// ============= 5. __proto__ vs Object.setPrototypeOf
 
 // // Avoid
 // obj.__proto__ = parent
 
-// // Use this  
+// // Use this
 // Object.setPrototypeOf(obj, parent)
 // UserFunction.prototype.login = function () { }
 
-// Virtual model: obj => constructor.prototype => Object.prototype => null
-// Example 1 
+// // Virtual model: obj => constructor.prototype => Object.prototype => null
+// // Example 1
 
-const parent = {
-    greet() {
-        console.log("Gretting coming fom Parents")
-    }
-};
+// const parent = {
+//     greet() {
+//         console.log("Gretting coming fom Parents")
+//     }
+// };
 
-const obj = {}
-Object.setPrototypeOf(obj, parent)  // set prototype of obj as parent
-obj.greet()
+// const obj = {}
+// Object.setPrototypeOf(obj, parent)  // set prototype of obj as parent
+// obj.greet()
 
-// in classes
+// // in classes
 
-class Parent {
-    gretting() {
-        console.log("Gretting from Parent")
+// class Parent {
+//     gretting() {
+//         console.log("Gretting from Parent")
+//     }
+// }
+
+// class Child extends Parent { }
+
+// // Internally  Object.setPrototypeOf(Child.prototype, Parent.prototype)
+// // Object.create(proto)	Creates a new object with proto as prototype
+// // Object.setPrototypeOf(obj, proto)	Changes prototype of an existing object
+// // Object.setPrototypeOf is slow because it changes an object’s internal structure.
+
+// const a = Object.create(parent)
+// const b = {}
+// Object.setPrototypeOf(b, parent)
+
+// =========== Real world payment system example
+
+class Payment {
+    pay(amount) {
+        console.log(`payment of ${amount} done by cash`)
     }
 }
 
-class Child extends Parent { }
+class UPIPayment extends Payment {
+    pay(amount) {
+        console.log(`payment of ${amount} done by UPI `)
+    }
+}
 
-// Internally  Object.setPrototypeOf(Child.prototype, Parent.prototype)
-// Object.create(proto)	Creates a new object with proto as prototype
-// Object.setPrototypeOf(obj, proto)	Changes prototype of an existing object
-// Object.setPrototypeOf is slow because it changes an object’s internal structure.
+class CreditCardPayment extends Payment {
+    pay(amount) {
+        console.log(`payment of ${amount} done by Credit Card `)
+    }
+}
 
-const a = Object.create(parent)
-const b = {}
-Object.setPrototypeOf(b, parent)
+function processPayment(paymentMethod, amount) {
+    return paymentMethod.pay(amount)
+}
 
+processPayment(new CreditCardPayment(), 400)
+processPayment(new UPIPayment(), 600)
 
 
 
