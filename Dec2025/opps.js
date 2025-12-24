@@ -238,7 +238,13 @@ class Parent {
 class Child extends Parent { }
 
 // Internally  Object.setPrototypeOf(Child.prototype, Parent.prototype)
+// Object.create(proto)	Creates a new object with proto as prototype
+// Object.setPrototypeOf(obj, proto)	Changes prototype of an existing object
+// Object.setPrototypeOf is slow because it changes an object’s internal structure.
 
+const a = Object.create(parent)
+const b = {}
+Object.setPrototypeOf(b, parent)
 
 
 
